@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EduStream LMS</title><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/style.css"></head><body><jsp:include page="fragments/nav.jsp"/><main><jsp:include page="fragments/flash.jsp"/><div class="heading"><div><p class="eyebrow">OFERTA ACADÉMICA</p><h1><c:choose><c:when test="${sessionScope.usuarioLogueado.rol == 'PROFESOR'}">Mis cursos</c:when><c:otherwise>Catálogo de cursos</c:otherwise></c:choose></h1></div>
+<c:if test="${sessionScope.usuarioLogueado.rol == 'PROFESOR'}"><a class="button" href="${pageContext.request.contextPath}/app/profesor/curso">Crear curso</a></c:if></div>
+<c:if test="${empty cursos}"><p class="empty">Todavía no hay cursos para mostrar.</p></c:if>
+<div class="cards"><c:forEach items="${cursos}" var="curso"><article><p class="eyebrow">CURSO #<c:out value="${curso.id}"/></p><h2><c:out value="${curso.nombre}"/></h2><p class="description"><c:out value="${curso.descripcion}"/></p><p class="muted">Profesor: <c:out value="${curso.profesor}"/></p>
+<c:choose><c:when test="${sessionScope.usuarioLogueado.rol == 'PROFESOR'}">
+<a class="button secondary" href="${pageContext.request.contextPath}/app/profesor/curso?id=${curso.id}">Editar / eliminar</a>
+</c:when><c:otherwise><form action="${pageContext.request.contextPath}/app/inscripciones" method="post"><input type="hidden" name="csrf" value="${sessionScope.csrf}"><input type="hidden" name="accion" value="inscribir"><input type="hidden" name="curso" value="${curso.id}"><button>Inscribirme</button></form></c:otherwise></c:choose></article></c:forEach></div></main><footer>EduStream · Proyecto final de Programación 2</footer></body></html>

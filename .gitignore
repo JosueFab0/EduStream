@@ -1,0 +1,9 @@
+target/
+nbproject/private/
+.local/
+*.log
+.env
+.env.*
+!.env.example
+nbactions.xml
+nb-configuration.xml

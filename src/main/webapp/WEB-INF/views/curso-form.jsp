@@ -1,0 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EduStream LMS</title><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/style.css"></head><body><jsp:include page="fragments/nav.jsp"/><main><jsp:include page="fragments/flash.jsp"/><p class="eyebrow">GESTIÓN DE CURSOS</p><h1><c:choose><c:when test="${empty curso or curso.id == 0}">Crear curso</c:when><c:otherwise>Editar curso</c:otherwise></c:choose></h1>
+<section class="panel"><form action="${pageContext.request.contextPath}/app/profesor/curso" method="post">
+<input type="hidden" name="csrf" value="${sessionScope.csrf}"><input type="hidden" name="accion" value="guardar"><input type="hidden" name="id" value="${empty curso ? 0 : curso.id}">
+<label for="nombre">Nombre del curso</label><input id="nombre" name="nombre" maxlength="150" value="<c:out value='${curso.nombre}'/>" required>
+<label for="descripcion">Descripción</label><textarea id="descripcion" name="descripcion" rows="6" maxlength="5000"><c:out value="${curso.descripcion}"/></textarea>
+<div class="actions"><button>Guardar curso</button><a href="${pageContext.request.contextPath}/app/cursos">Volver</a></div></form></section>
+<c:if test="${not empty curso and curso.id > 0}"><section class="danger-zone"><h2>Eliminar curso</h2><p>Esta acción también eliminará todas las inscripciones del curso. No se puede deshacer.</p>
+<form action="${pageContext.request.contextPath}/app/profesor/curso" method="post"><input type="hidden" name="csrf" value="${sessionScope.csrf}"><input type="hidden" name="accion" value="eliminar"><input type="hidden" name="id" value="${curso.id}"><label class="check"><input type="checkbox" required> Confirmo que deseo eliminar el curso y sus inscripciones.</label><button class="danger">Eliminar definitivamente</button></form></section></c:if></main><footer>EduStream · Proyecto final de Programación 2</footer></body></html>
