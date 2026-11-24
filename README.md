@@ -21,17 +21,8 @@ Requiere JDK 11 o superior, MySQL 8, Apache Tomcat 9 y Apache NetBeans con sopor
 
 Las contraseñas de la base se configuran en el entorno de cada equipo. El archivo SQL de usuario de aplicación es una plantilla que debe ajustarse antes de ejecutarla.
 
-## Documentación
-
-- [Manual de estudio en PDF](docs/Manual-completo-EduStream.pdf).
-- [Manual navegable con código y explicaciones](docs/Manual-completo-EduStream.html): descarga el archivo y ábrelo en un navegador.
-- [Guía del equipo para el trabajo escrito](docs/Guia-equipo-EduStream.md).
-- [Correspondencia con la rúbrica](docs/RUBRICA.md).
-- [Casos de prueba](docs/CASOS_PRUEBA.md) y [resultados documentados](docs/RESULTADOS.md).
-- [Capturas de creación, inscripción y persistencia tras reiniciar](docs/evidencias).
-
 ## Organización
 
 `src/main/java` contiene modelos, acceso a datos, servicios y controladores. `src/main/webapp` contiene las vistas y el diseño. `sql` contiene la base y la plantilla de permisos. `src/test` contiene las pruebas.
 
-El desarrollo se realizó inicialmente en una máquina local. Este repositorio reúne el proyecto y la documentación para compartir la entrega.
+El desarrollo se realizó inicialmente en una máquina local. La documentación del equipo se incorporará cuando esté terminada.
